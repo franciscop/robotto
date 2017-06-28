@@ -16,7 +16,9 @@
       //expose instance for button callbacks
       window.wsavc = wsavc;
 
-      wsavc.playStream();
+      setTimeout(function(){
+        wsavc.playStream();
+      }, 1000);
     </script>
   </body>
 </html>
