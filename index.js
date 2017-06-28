@@ -43,18 +43,22 @@
 // */
 
 
-const http    = require('http');
-const express = require('express');
-
-
+// const http    = require('http');
+// const express = require('express');
+//
+//
 const WebStreamerServer = require('./lib/raspivid');
+//
+// const app  = express();
+//
+//   //public website
+// app.use(express.static(__dirname + '/public'));
+//
+// const server  = http.createServer(app);
+// const silence = new WebStreamerServer(server);
+//
+// server.listen(3000);
 
-const app  = express();
-
-  //public website
-app.use(express.static(__dirname + '/public'));
-
-const server  = http.createServer(app);
-const silence = new WebStreamerServer(server);
-
-server.listen(3000);
+require('server')(3000).then(ctx => {
+  new WebStreamerServer(ctx.server);
+});
