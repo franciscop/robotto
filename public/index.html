@@ -22,9 +22,9 @@
     </script>
     <script src="https://unpkg.com/socket.io-client@1/dist/socket.io.slim.min.js"></script>
     <script>
-      const socket = io();
+      const socket = io(undefined, { path: '/io' });
       console.log(socket);
-      socket.emit('forward', {});
+      setInterval(() => { socket.emit('forward', {}); }, 1000);
     </script>
   </body>
 </html>

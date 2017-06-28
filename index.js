@@ -6,7 +6,7 @@ const stream = require('./lib/raspivid');
 const motorL = motor(0, 2);
 const motorR = motor(4, 5);
 
-server([
+server({ socket: { path: '/io'} }, [
   socket('left', async ctx => {
     console.log('LEFT');
     await Promise.all([
@@ -27,6 +27,7 @@ server([
       motorL.forward(),
       motorR.forward()
     ]);
+    ctx.socket.emit('ahead')
   }),
   socket('backward', async ctx => {
     console.log('BACKWARD');
