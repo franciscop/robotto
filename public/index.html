@@ -20,5 +20,11 @@
         wsavc.playStream();
       }, 1000);
     </script>
+    <script src="https://unpkg.com/socket.io-client@1/dist/socket.io.slim.min.js"></script>
+    <script>
+      const socket = io();
+      console.log(socket);
+      socket.emit('forward', {});
+    </script>
   </body>
 </html>
