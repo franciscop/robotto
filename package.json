@@ -1,0 +1,22 @@
+{
+  "name": "raspiback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fluent-ffmpeg": "^2.1.2",
+    "mp4-stream": "^2.0.2",
+    "mux-demux": "^3.7.9",
+    "netcat": "^1.2.6",
+    "node-netcat": "^1.4.8",
+    "server": "^1.0.0-beta.1",
+    "ws": "^3.0.0"
+  }
+}
