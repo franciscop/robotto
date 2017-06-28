@@ -1,8 +1,15 @@
-const WebStreamerServer = require('./lib/raspivid');
-require('server')(3000).then(ctx => {
-  new WebStreamerServer(ctx.server);
+const server = require('server');
+const stream = require('./lib/raspivid');
+
+server().then(ctx => {
+  new stream(ctx.server);
 });
 
-process.on('uncaughtException', e => {
-  console.log('MANAGED:', e);
+
+const { exec } = require('child_process');
+
+process.on('uncaughtException', err => {
+  if (err.code === 'ENOTCONN') {
+    exec('pkill raspivid');
+  }
 });
