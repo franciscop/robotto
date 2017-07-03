@@ -17,6 +17,15 @@ const handle = pin => ({
     }
     await exec(`gpio write ${pin} 0`);
   },
+  to: async (value = 0) => {
+    value = Math.floor(value * 1023);
+    console.log(value);
+    if (!modes[pin] || modes[pin] !== 'pwm') {
+      await exec(`gpio mode ${pin} pwm`);
+      modes[pin] = 'pwm';
+    }
+    await exec(`gpio pwm ${pin} ${value}`);
+  }
 });
 
 module.exports = (pin, mode = 'out') => handle(pin);
