@@ -4,7 +4,7 @@ const motor = require('./motor');
 const stream = require('./lib/raspivid');
 
 const motorL = motor(0, 2, 1);
-const motorR = motor(4, 5, 6);
+const motorR = motor(4, 5);
 
 server({ socket: { path: '/io'} }, [
   socket('left', async ctx => {
