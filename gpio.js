@@ -23,12 +23,14 @@ const handle = pin => ({
     if (!modes[pin] || modes[pin] !== 'pwm') {
       console.log(`gpio mode ${pin} pwm`);
       console.log(`gpio mode 1 pwm`);
+      console.log('Same1?', `gpio mode ${pin} pwm` === `gpio mode 1 pwm`);
       // await exec(`gpio mode ${pin} pwm`);
       await exec(`gpio mode 1 pwm`);
       modes[pin] = 'pwm';
     }
     console.log(`gpio pwm ${pin} ${value}`);
     console.log(`gpio pwm 1 350`);
+    console.log('Same?', `gpio pwm ${pin} ${value}` === `gpio pwm 1 350`);
     // await exec(`gpio pwm ${pin} ${value}`);
     await exec(`gpio pwm 1 350`);
   }
