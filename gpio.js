@@ -19,7 +19,7 @@ const handle = pin => ({
   },
   to: async (value = 0) => {
     value = Math.floor(value * 1023);
-    value = 350;
+    value = 450;
     if (!modes[pin] || modes[pin] !== 'pwm') {
       console.log(`gpio mode ${pin} pwm`);
       console.log(`gpio mode 1 pwm`);
