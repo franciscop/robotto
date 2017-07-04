@@ -12,7 +12,7 @@ module.exports = (a, b, c) => ({
       if (stable === 'forward') {
         gpio(c).to(350);
       }
-    }, 500);
+    }, 1000);
   },
   backward: async () => {
     await gpio(a).off();
@@ -23,7 +23,7 @@ module.exports = (a, b, c) => ({
       if (stable === 'backward') {
         gpio(c).to(350);
       }
-    }, 500);
+    }, 1000);
   },
   stop: async () => {
     await gpio(a).off();
