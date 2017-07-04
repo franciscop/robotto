@@ -17,9 +17,9 @@ const handle = pin => ({
     }
     await exec(`gpio write ${pin} 0`);
   },
-  to: async (value = 0) => {
-    value = Math.floor(value * 1023);
-    value = 450;
+  to: async (value = 300) => {
+    // value = Math.floor(value * 1023);
+    // value = 450;
     if (!modes[pin] || modes[pin] !== 'pwm') {
       console.log(`gpio mode ${pin} pwm`);
       await exec(`gpio mode ${pin} pwm`);
