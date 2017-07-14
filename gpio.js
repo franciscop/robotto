@@ -10,6 +10,7 @@ const handle = pin => ({
     }
     await exec(`gpio write ${pin} 1`);
   },
+
   off: async () => {
     if (!modes[pin] || modes[pin] !== 'out') {
       await exec(`gpio mode ${pin} out`);
@@ -17,6 +18,8 @@ const handle = pin => ({
     }
     await exec(`gpio write ${pin} 0`);
   },
+
+  // From 0 to 1024
   to: async (value = 300) => {
     // value = Math.floor(value * 1023);
     // value = 450;
