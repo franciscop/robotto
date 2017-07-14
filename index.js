@@ -31,16 +31,16 @@ server({ socket: { path: '/io'} }, [
   socket('forward', async ctx => {
     console.log('FORWARD');
     await Promise.all([
-      motorL(60),
-      motorR(60)
+      motorL(80),
+      motorR(80)
     ]);
     ctx.socket.emit('ahead')
   }),
   socket('backward', async ctx => {
     console.log('BACKWARD');
     await Promise.all([
-      motorL(-60),
-      motorR(-60)
+      motorL(-80),
+      motorR(-80)
     ]);
   }),
 
