@@ -4,8 +4,8 @@ const motor = require('./motor');
 const stream = require('./lib/raspivid');
 
 // TODO: change the pins (speed, dir)
-const motorL = motor(0, 2, 1);
-const motorR = motor(4, 5, 23);
+const motorL = motor(1, 0);
+const motorR = motor(23, 2);
 
 // const arm = {
 //   vertical: motor(a, b),
