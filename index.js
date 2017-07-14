@@ -17,15 +17,15 @@ server({ socket: { path: '/io'} }, [
   socket('left', async ctx => {
     console.log('LEFT');
     await Promise.all([
-      motorR(30),
-      motorL(-30)
+      motorR(50),
+      motorL(-50)
     ]);
   }),
   socket('right', async ctx => {
     console.log('RIGHT');
     await Promise.all([
-      motorL(30),
-      motorR(-30)
+      motorL(50),
+      motorR(-50)
     ]);
   }),
   socket('forward', async ctx => {
