@@ -17,30 +17,30 @@ server({ socket: { path: '/io'} }, [
   socket('left', async ctx => {
     console.log('LEFT');
     await Promise.all([
-      motorR(50),
-      motorL(-50)
+      motorR(70),
+      motorL(-70)
     ]);
   }),
   socket('right', async ctx => {
     console.log('RIGHT');
     await Promise.all([
-      motorL(50),
-      motorR(-50)
+      motorL(70),
+      motorR(-70)
     ]);
   }),
   socket('forward', async ctx => {
     console.log('FORWARD');
     await Promise.all([
-      motorL(30),
-      motorR(30)
+      motorL(50),
+      motorR(50)
     ]);
     ctx.socket.emit('ahead')
   }),
   socket('backward', async ctx => {
     console.log('BACKWARD');
     await Promise.all([
-      motorL(-30),
-      motorR(-30)
+      motorL(-50),
+      motorR(-50)
     ]);
   }),
 
