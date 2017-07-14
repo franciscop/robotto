@@ -7,9 +7,6 @@ const bound = val => Math.floor(Math.min(Math.max(Math.abs(val), 0), 100));
 // Define the ground
 module.exports = async (speedPin, dirPin) => {
 
-  // Define the ground
-  await gpio(groundPin).off();
-
   // Speed is from -100 to 100
   return async speed => {
 
