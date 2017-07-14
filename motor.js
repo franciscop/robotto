@@ -19,7 +19,7 @@ module.exports = (speedPin, dirPin) => {
     // Execute the action on both pins
     return Promise.all([
       gpio(dirPin)[forward ? 'on' : 'off'](),
-      gpio(speedPin).to(magnitude)
+      gpio(speedPin).to(magnitude * 1023 / 100)
     ]);
   };
 };
