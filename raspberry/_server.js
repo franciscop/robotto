@@ -1,21 +1,14 @@
 "use strict";
 
-
 const WebSocketServer = require('ws').Server;
 const Splitter        = require('stream-split');
-const merge           = require('mout/object/merge');
 
 const NALseparator    = new Buffer([0,0,0,1]);//NAL break
 
-
 class _Server {
 
-  constructor(server, options) {
-
-    this.options = merge({
-        width : 960,
-        height: 540,
-    }, options);
+  constructor(server, options = {}) {
+    this.options = { width: 960, height: 540, ...options };
 
     this.wss = new WebSocketServer({ server });
 
@@ -25,7 +18,6 @@ class _Server {
 
     this.wss.on('connection', this.new_client);
   }
-  
 
   start_feed() {
     var readStream = this.get_feed();
@@ -42,8 +34,7 @@ class _Server {
   broadcast(data) {
     this.wss.clients.forEach(function(socket) {
 
-      if(socket.buzy)
-        return;
+      if(socket.buzy) return;
 
       socket.buzy = true;
       socket.buzy = false;
@@ -55,7 +46,6 @@ class _Server {
   }
 
   new_client(socket) {
-  
     var self = this;
     console.log('New guy');
 
@@ -69,10 +59,8 @@ class _Server {
       var cmd = "" + data, action = data.split(' ')[0];
       console.log("Incomming action '%s'", action);
 
-      if(action == "REQUESTSTREAM")
-        self.start_feed();
-      if(action == "STOPSTREAM")
-        self.readStream.pause();
+      if(action === "REQUESTSTREAM") self.start_feed();
+      if(action === "STOPSTREAM") self.readStream.pause();
     });
 
     socket.on('close', function() {
@@ -80,9 +68,6 @@ class _Server {
       console.log('stopping client interval');
     });
   }
-
-
 };
-
 
 module.exports = _Server;

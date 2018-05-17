@@ -1,18 +1,11 @@
 "use strict";
 
-
 const spawn  = require('child_process').spawn;
-const merge  = require('mout/object/merge');
-
 const Server = require('./_server');
 
-
 class FFMpegServer extends Server {
-
-  constructor(server, opts) {
-    super(server, merge({
-      fps : 15,
-    }, opts));
+  constructor(server, opts = {}) {
+    super(server, { fps: 15, ...opts });
   }
 
   get_feed() {
@@ -20,10 +13,10 @@ class FFMpegServer extends Server {
     var args = [
         "-f", "gdigrab",
         "-framerate", this.options.fps,
-        "-offset_x", 10, 
-        "-offset_y", 20, 
+        "-offset_x", 10,
+        "-offset_y", 20,
         "-video_size", this.options.width + 'x' + this.options.height,
-        '-i',  'desktop', 
+        '-i',  'desktop',
         '-pix_fmt',  'yuv420p',
         '-c:v',  'libx264',
         '-vprofile', 'baseline',
@@ -64,5 +57,3 @@ class FFMpegServer extends Server {
 
 
 module.exports = FFMpegServer;
-
-
