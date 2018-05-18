@@ -1,4 +1,4 @@
-const socket = io(undefined, { path: '/io' });
+const socket = io();
 
 const joystick = document.querySelector('.joystick');
 const position = document.querySelector('.position');

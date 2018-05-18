@@ -16,7 +16,8 @@
       document.body.appendChild(canvas);
 
       // Create h264 player
-      var uri = "ws://" + document.location.host;
+      var uri = "ws://" + document.location.host + '/stream';
+      console.log(uri);
       var wsavc = new WSAvcPlayer(canvas, "webgl", 1, 35);
       wsavc.connect(uri);
 
@@ -29,7 +30,7 @@
     </script>
     <script src="https://unpkg.com/superdom@1"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.1/mousetrap.min.js"></script>
-    <script src="https://unpkg.com/socket.io-client@1/dist/socket.io.slim.min.js"></script>
+    <script src="https://unpkg.com/socket.io-client@2/dist/socket.io.slim.js"></script>
     <script src="javascript.js"></script>
   </body>
 </html>

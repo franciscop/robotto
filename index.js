@@ -1,12 +1,12 @@
 const server = require('server');
-const { get, socket } = server.router;
+const { get, post, socket, error } = server.router;
 const { motor, stream } = require('./raspberry');
 
 // TODO: change the pins (speed, dir)
 const motorL = motor(1, 0);
 const motorR = motor(23, 2);
 
-server({ socket: { path: '/io' } }, [
+server([
   socket('left', async ctx => {
     console.log('LEFT');
     await Promise.all([
@@ -43,7 +43,8 @@ server({ socket: { path: '/io' } }, [
       motorR.to(0)
     ]);
   })
-]).then(ctx => { new stream(ctx.server); });
+], error(ctx => console.log(ctx.error))
+).then(ctx => { new stream(ctx.server); });
 
 const { exec } = require('child_process');
 

@@ -1,16 +1,15 @@
 "use strict";
 
 const WebSocketServer = require('ws').Server;
-const Splitter        = require('stream-split');
+const Splitter = require('stream-split');
 
-const NALseparator    = new Buffer([0,0,0,1]);//NAL break
+const NALseparator = new Buffer([0,0,0,1]);//NAL break
 
 class _Server {
-
   constructor(server, options = {}) {
     this.options = { width: 960, height: 540, ...options };
 
-    this.wss = new WebSocketServer({ server });
+    this.wss = new WebSocketServer({ server, path: '/stream' });
 
     this.new_client = this.new_client.bind(this);
     this.start_feed = this.start_feed.bind(this);
